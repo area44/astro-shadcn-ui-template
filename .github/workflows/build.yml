@@ -1,32 +1,15 @@
-# To get started with Astro see: https://docs.astro.build/en/getting-started
-name: Build with Astro
+name: Deploy Astro Site
 
 on:
-  pull_request:
+  push:
     branches: ['main']
+  pull_request:
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .nvmrc
-          cache: pnpm
-          cache-dependency-path: pnpm-lock.yaml
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build with Astro
-        run: pnpm build
+  deploy:
+    uses: area44/actions-lib/.github/workflows/astro.yml@v0.4.0

@@ -7,4 +7,4 @@ on:
 
 jobs:
   autofix:
-    uses: area44/actions-lib/.github/workflows/autofix.yml@v0.4.0
+    uses: area44/actions-lib/.github/workflows/autofix.yml@v0.4.1

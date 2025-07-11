@@ -23,15 +23,15 @@
     "clsx": "^2.1.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "sharp": "^0.34.2",
+    "sharp": "^0.34.3",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@area44/biome-config": "^2.2.2",
-    "@biomejs/biome": "^2.0.6",
-    "@types/node": "^22.16.0",
+    "@biomejs/biome": "^2.1.1",
+    "@types/node": "^22.16.3",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "typescript": "^5.8.3"

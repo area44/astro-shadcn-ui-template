@@ -1,4 +1,5 @@
 name: GitHub Pages
+
 on:
   push:
     branches: ['main']
@@ -10,5 +11,26 @@ permissions:
   id-token: write
 
 jobs:
-  astro:
-    uses: area44/actions/.github/workflows/astro.yml@v2.0.0
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.build.outputs.should_deploy }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run build
+        id: build
+        uses: area44/workflows/astro@v2.0.0
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.should_deploy == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

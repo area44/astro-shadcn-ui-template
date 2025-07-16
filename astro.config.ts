@@ -1,7 +1,7 @@
 // @ts-check
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 
 const site = process.env.CI
   ? process.env.VERCEL_ENV !== "production" && process.env.VERCEL_URL
@@ -13,6 +13,15 @@ const site = process.env.CI
 export default defineConfig({
   site,
   integrations: [react()],
+  experimental: {
+    fonts: [
+      {
+        provider: fontProviders.google(),
+        name: "Inter",
+        cssVariable: "--font-inter",
+      },
+    ],
+  },
   vite: {
     plugins: [tailwindcss()],
   },

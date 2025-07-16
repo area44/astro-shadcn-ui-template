@@ -11,7 +11,7 @@ Before you begin, ensure that you have **Node.js** and **pnpm** installed.
 ### Setup
 
 ```bash
-git clone https://github.com/AREA44/astro-shadcn-ui-template
+git clone https://github.com/area44/astro-shadcn-ui-template
 cd astro-shadcn-ui-template
 pnpm install
 pnpm dev

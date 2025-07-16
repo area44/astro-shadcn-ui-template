@@ -1,42 +1,36 @@
-# Astro Shadcn UI Template
+# Astro shadcn/ui template
 
-This template helps you build apps with Astro, Tailwind CSS, and Shadcn UI.
+A modern starter template using [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), and [shadcn/ui](https://ui.shadcn.com/) - perfect for building fast, accessible, and themeable web apps.
+
+---
 
 ## Getting Started
 
-To get started with this application, make sure you have Node.js v18+ installed on your system. Then, follow these steps:
+Before you begin, ensure that you have **Node.js** and **pnpm** installed.
+
+### Setup
 
 ```bash
-git clone --depth=1 https://github.com/AREA44/astro-shadcn-ui-template
+git clone https://github.com/AREA44/astro-shadcn-ui-template
 cd astro-shadcn-ui-template
 pnpm install
 pnpm dev
 ```
 
-Now, you can open your browser and navigate to http://localhost:4321 to see the application running.
+Open your browser and go to [http://localhost:4321](http://localhost:4321) to see the app running.
 
-## Features
+## Adding Components
 
-- [Astro](https://astro.build): A modern static site builder that allows you to write components using familiar web standards like HTML, CSS, and JavaScript.
-- [Tailwind CSS](https://tailwindcss.com): A utility-first CSS framework that provides a set of pre-designed styling classes to rapidly build user interfaces.
-- [shadcn/ui](https://ui.shadcn.com): A collection of reusable UI components for building responsive and accessible interfaces.
-- The template includes support for a theme toggle, allowing users to switch between light and dark themes.
+shadcn/ui provides pre-built, accessible UI components. To add one:
 
-## How to add components
+1. Follow the official [Astro installation guide](https://ui.shadcn.com/docs/installation/astro).
+2. Pick a component (e.g., [Accordion](https://ui.shadcn.com/docs/components/accordion), [Dialog](https://ui.shadcn.com/docs/components/dialog)) and follow the usage instructions.
 
-Shadcn UI is a collection of re-usable components that can be easily integrated into your applications. It is not a component library, but rather a set of components that you can copy and paste into your projects.
+> [!NOTE] 
+> In Astro, an [island](https://docs.astro.build/en/concepts/islands/) is an interactive component rendered on the client. For complex or dynamic components, check [Add a Shadcn UI Component | Space Madness Stack](https://spacemadness.dev/docs/add-a-shadcn-ui-component)
 
-To add a new component to your application, please refer to the [configuration guide](https://ui.shadcn.com/docs/installation/astro#thats-it).
-
-> [!NOTE]
-> In Astro, an [island](https://docs.astro.build/en/concepts/islands/) refers to any interactive UI component on the page. To add an interactive component like [Accordion](https://ui.shadcn.com/docs/components/accordion), [Dialog](https://ui.shadcn.com/docs/components/dialog) and more you have a couple of solutions available: [Add a Shadcn UI Component - Space Madness](https://spacemadness.dev/docs/add-a-shadcn-ui-component) or [shadcn-ui/ui#2890](https://github.com/AREA44/astro-shadcn-ui-template/issues/66).
-
-For detailed documentation on using Shadcn UI, please visit the [full documentation](https://ui.shadcn.com/docs).
-
-Shadcn UI is primarily built for the React framework. If you are unfamiliar with framework components in Astro, we recommend reading the [framework components guide](https://docs.astro.build/en/core-concepts/framework-components/) to get started.
-
-Feel free to explore the various components and enhance your application with Shadcn UI!
+If you're new to using React (or other frameworks) inside Astro, start with the [Framework Components guide](https://docs.astro.build/en/guides/framework-components/).
 
 ## License
 
-Licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).

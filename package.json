@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@area44/biome-config": "^2.3.1",
-    "@biomejs/biome": "^2.3.0",
+    "@biomejs/biome": "^2.3.1",
     "@types/node": "^24.9.1",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",

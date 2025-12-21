@@ -1,20 +1,21 @@
 ---
-import { Font } from "astro:assets";
 import "@/styles/global.css";
 
+import { Font } from "astro:assets";
+
 interface Props {
-  title?: string | undefined;
-  description?: string | undefined;
-  ogImage?: URL | undefined;
-}
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
-if (Astro.props.ogImage === undefined) {
-  Astro.props.ogImage = new URL("og-image.png", canonicalURL);
+  title?: string;
+  description?: string;
+  ogImage?: URL;
 }
 
 const { title, description, ogImage } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const siteTitle = title ?? "Default Site Title";
+const siteDescription = description ?? "Default description for your website.";
+const siteOgImage = ogImage ?? new URL("og-image.png", canonicalURL);
+const faviconURL = new URL("favicon.svg", canonicalURL).toString();
 ---
 
 <meta charset="utf-8" />
@@ -23,25 +24,22 @@ const { title, description, ogImage } = Astro.props;
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
 <link rel="canonical" href={canonicalURL} />
-<link
-  rel="shortcut icon"
-  type="image/svg+xml"
-  href={`${Astro.site}favicon.svg`}
-/>
-<title>{title}</title>
-<meta name="title" content={title} />
-<meta name="description" content={description} />
+<link rel="shortcut icon" type="image/svg+xml" href={faviconURL} />
+
+<title>{siteTitle}</title>
+<meta name="title" content={siteTitle} />
+<meta name="description" content={siteDescription} />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:image" content={ogImage} />
+<meta property="og:title" content={siteTitle} />
+<meta property="og:description" content={siteDescription} />
+<meta property="og:image" content={siteOgImage.toString()} />
 
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={ogImage} />
+<meta property="twitter:title" content={siteTitle} />
+<meta property="twitter:description" content={siteDescription} />
+<meta property="twitter:image" content={siteOgImage.toString()} />
 
 <Font cssVariable="--font-inter" preload />

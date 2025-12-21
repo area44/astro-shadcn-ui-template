@@ -2,23 +2,23 @@
   "name": "@area44/astro-shadcn-ui-template",
   "version": "25.12.21",
   "description": "An Astro template for building apps with shadcn/ui components, Tailwind CSS",
-  "repository": {
-    "url": "https://github.com/area44/astro-shadcn-ui-template",
-    "type": "git"
-  },
+  "license": "MIT",
   "author": {
     "name": "AREA44",
     "url": "https://github.com/area44"
   },
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/area44/astro-shadcn-ui-template"
+  },
   "scripts": {
     "build": "astro build",
     "dev": "astro dev",
     "preview": "astro preview",
     "start": "astro dev",
-    "format": "biome format --write",
-    "lint": "biome lint --write",
-    "check": "biome check --write"
+    "format": "oxfmt",
+    "lint": "oxlint",
+    "check": "oxlint && oxfmt"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
@@ -37,11 +37,11 @@
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "@area44/biome-config": "^2.3.2",
-    "@biomejs/biome": "^2.3.10",
     "@types/node": "^24.10.4",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "oxfmt": "^0.19.0",
+    "oxlint": "^1.34.0",
     "tw-animate-css": "^1.4.0",
     "typescript": "^5.9.3"
   }

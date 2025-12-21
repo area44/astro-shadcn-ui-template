@@ -3,19 +3,17 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
 import { buttonVariants } from "@/components/ui/button";
 ---
 
-<header
-  class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60"
->
+<header class="bg-background sticky top-0 z-50 w-full">
   <div class="container px-4 mx-auto flex h-16 items-center justify-between">
     <a
       href="/"
-      class="flex items-center gap-2 text-lg font-semibold"
+      class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 h-8 rounded-md gap-1.5 has-[>svg]:px-2.5 px-2.5 relative"
       aria-label="Homepage"
     >
       <span>Home</span>
     </a>
 
-    <nav class="flex items-center gap-2">
+    <nav class="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
       <a
         href="https://github.com/area44/astro-shadcn-ui-template"
         target="_blank"

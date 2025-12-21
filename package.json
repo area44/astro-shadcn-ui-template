@@ -22,6 +22,8 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
+    "@base-ui/react": "^1.0.0",
+    "@fontsource-variable/inter": "^5.2.8",
     "@radix-ui/react-slot": "^1.2.4",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.6",
@@ -30,6 +32,7 @@
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
+    "shadcn": "^3.6.2",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18"
   },

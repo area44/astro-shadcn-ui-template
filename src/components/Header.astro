@@ -1,6 +1,18 @@
 ---
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import { Button } from "@/components/ui/button";
+
+import { Github } from "lucide-react";
+
+const res = await fetch(
+  "https://api.github.com/repos/area44/astro-shadcn-ui-template",
+);
+const json = await res.json();
+
+const starCount =
+  json.stargazers_count >= 1000
+    ? `${Math.round(json.stargazers_count / 1000)}k`
+    : json.stargazers_count.toLocaleString();
 ---
 
 <header class="bg-background sticky top-0 z-50 w-full">
@@ -34,17 +46,20 @@ import { Button } from "@/components/ui/button";
       </nav>
 
       <div class="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
-        <Button variant="ghost">
+        <Button variant="ghost" className="h-8 shadow-none">
           <a
             href="https://github.com/area44/astro-shadcn-ui-template"
             target="_blank"
             rel="noopener noreferrer"
           >
-            GitHub
+            <Github />
+            <span class="text-muted-foreground w-fit text-xs tabular-nums">
+              {starCount}
+            </span>
           </a>
-        </Button>
 
-        <ThemeToggle />
+          <ThemeToggle />
+        </Button>
       </div>
     </div>
   </div>

@@ -27,34 +27,11 @@ const canonicalURL = site
   ? new URL(pathname, site).toString()
   : Astro.url.toString();
 
-const ogImageURL = site
-  ? new URL(ogImage, site).toString()
-  : ogImage;
+const ogImageURL = site ? new URL(ogImage, site).toString() : ogImage;
 
 const faviconURL = site
   ? new URL("/favicon.svg", site).toString()
   : "/favicon.svg";
-
-// ---- JSON-LD ----
-const jsonLd =
-  type === "article"
-    ? {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        headline: title,
-        description,
-        image: ogImageURL,
-        mainEntityOfPage: canonicalURL,
-        datePublished: publishedTime,
-        dateModified: modifiedTime ?? publishedTime,
-      }
-    : {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        name: title,
-        description,
-        url: canonicalURL,
-      };
 ---
 
 <!-- Basic -->
@@ -85,8 +62,3 @@ const jsonLd =
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImageURL} />
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-  {JSON.stringify(jsonLd)}
-</script>

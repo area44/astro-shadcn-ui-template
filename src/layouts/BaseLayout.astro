@@ -20,9 +20,9 @@ const { title, description, ogImage } = Astro.props;
       "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
     )}
   >
-    <div class="relative flex min-h-screen flex-col">
+    <div class="bg-background relative z-10 flex min-h-svh flex-col">
       <Header />
-      <main class="flex-auto">
+      <main class="flex flex-1 flex-col">
         <slot />
       </main>
       <Footer />

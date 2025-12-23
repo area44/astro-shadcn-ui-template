@@ -4,38 +4,89 @@ import "@/styles/global.css";
 interface Props {
   title?: string;
   description?: string;
-  ogImage?: URL;
+  ogImage?: string;
+  type?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
-const { title, description, ogImage } = Astro.props;
+const {
+  title = "Default Site Title",
+  description = "Default description for your website.",
+  ogImage = "/og-image.png",
+  type = "website",
+  publishedTime,
+  modifiedTime,
+} = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
-const siteTitle = title ?? "Default Site Title";
-const siteDescription = description ?? "Default description for your website.";
-const siteOgImage = ogImage ?? new URL("og-image.png", Astro.site);
-const faviconURL = new URL("favicon.svg", Astro.site).toString();
+// ---- Safe URL helpers ----
+const site = Astro.site;
+const pathname = Astro.url.pathname;
+
+const canonicalURL = site
+  ? new URL(pathname, site).toString()
+  : Astro.url.toString();
+
+const ogImageURL = site
+  ? new URL(ogImage, site).toString()
+  : ogImage;
+
+const faviconURL = site
+  ? new URL("/favicon.svg", site).toString()
+  : "/favicon.svg";
+
+// ---- JSON-LD ----
+const jsonLd =
+  type === "article"
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: title,
+        description,
+        image: ogImageURL,
+        mainEntityOfPage: canonicalURL,
+        datePublished: publishedTime,
+        dateModified: modifiedTime ?? publishedTime,
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: title,
+        description,
+        url: canonicalURL,
+      };
 ---
 
+<!-- Basic -->
 <meta charset="utf-8" />
-<meta name="robots" content="index, follow" />
-<meta name="googlebot" content="index, follow" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
+<meta name="robots" content="index, follow" />
+
+<!-- Canonical -->
 <link rel="canonical" href={canonicalURL} />
-<link rel="shortcut icon" type="image/svg+xml" href={faviconURL} />
+<link rel="icon" href={faviconURL} type="image/svg+xml" />
 
-<title>{siteTitle}</title>
-<meta name="title" content={siteTitle} />
-<meta name="description" content={siteDescription} />
+<!-- Title -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
 
-<meta property="og:type" content="website" />
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={siteTitle} />
-<meta property="og:description" content={siteDescription} />
-<meta property="og:image" content={siteOgImage.toString()} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageURL} />
 
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={siteTitle} />
-<meta property="twitter:description" content={siteDescription} />
-<meta property="twitter:image" content={siteOgImage.toString()} />
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageURL} />
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+  {JSON.stringify(jsonLd)}
+</script>

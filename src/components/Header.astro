@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Icons } from "@/components/Icons";
 import { HomeIcon } from "lucide-react";
+import { MobileNav } from "@/components/MobileNav";
+import { MainNav } from "@/components/MainNav";
 
 const res = await fetch(
   "https://api.github.com/repos/area44/astro-shadcn-ui-template",
@@ -21,37 +23,15 @@ const StarCount =
     <div
       class="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:h-4!"
     >
-      <!-- Mobile nevigation -->
-      <Button variant="ghost" size="icon" className="size-8 flex">
+      <MobileNav client:load className="flex lg:hidden" />
+      <Button variant="ghost" size="icon" className="hidden size-8 lg:flex">
         <a href="/">
           <HomeIcon className="size-5" />
           <span class="sr-only">Home</span>
         </a>
       </Button>
 
-      <!-- Main negivation -->
-      <nav class="items-center gap-0 hidden lg:flex px-2.5">
-        <Button variant="ghost">
-          <a
-            href="https://astro.build"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="relative items-center"
-          >
-            Astro
-          </a>
-        </Button>
-        <Button variant="ghost">
-          <a
-            href="https://ui.shadcn.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="relative items-center"
-          >
-            shadcn/ui
-          </a>
-        </Button>
-      </nav>
+      <MainNav className="hidden lg:flex" />
 
       <div class="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
         <Button variant="ghost" size="sm" className="h-8 shadow-none">

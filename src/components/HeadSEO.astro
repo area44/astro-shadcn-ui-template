@@ -1,6 +1,5 @@
 ---
 import "@/styles/global.css";
-const base = import.meta.env.BASE_URL;
 
 interface Props {
   title?: string;
@@ -16,20 +15,9 @@ const {
   type = "website",
 } = Astro.props;
 
-// ---- Safe URL helpers ----
-const site = Astro.site ? new URL(base, Astro.site) : undefined;
-
-const pathname = Astro.url.pathname.replace(base, "");
-
-const canonicalURL = site
-  ? new URL(pathname, site).toString()
-  : Astro.url.toString();
-
-const ogImageURL = site ? new URL(ogImage, site).toString() : ogImage;
-
-const faviconURL = site
-  ? new URL("/favicon.svg", site).toString()
-  : "/favicon.svg";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageURL = ogImage ?? new URL("og-image.png", canonicalURL).toString();
+const faviconURL = new URL("favicon.svg", canonicalURL).toString();
 ---
 
 <!-- Basic -->

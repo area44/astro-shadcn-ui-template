@@ -1,10 +1,7 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-export function MainNav({
-  className,
-  ...props
-}: React.ComponentProps<"nav">) {
+export function MainNav({ className, ...props }: React.ComponentProps<"nav">) {
   return (
     <nav className={cn("items-center gap-0", className)} {...props}>
       <Button variant="ghost">

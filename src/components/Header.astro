@@ -1,15 +1,16 @@
 ---
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import { Button } from "@/components/ui/button";
-
-import { Github } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { Icons } from "@/components/Icons";
+import { HomeIcon } from "lucide-react";
 
 const res = await fetch(
   "https://api.github.com/repos/area44/astro-shadcn-ui-template",
 );
 const json = await res.json();
 
-const starCount =
+const StarCount =
   json.stargazers_count >= 1000
     ? `${Math.round(json.stargazers_count / 1000)}k`
     : json.stargazers_count.toLocaleString();
@@ -20,8 +21,11 @@ const starCount =
     <div
       class="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:h-4!"
     >
-      <Button variant="ghost">
-        <a href="/" target="_blank" rel="noopener noreferrer"> Home </a>
+      <Button variant="ghost" size="icon" className="size-8 flex">
+        <a href="/">
+          <HomeIcon className="size-5" />
+          <span class="sr-only">Home</span>
+        </a>
       </Button>
 
       <nav class="items-center gap-0 hidden lg:flex">
@@ -46,20 +50,21 @@ const starCount =
       </nav>
 
       <div class="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
-        <Button variant="ghost" className="h-8 shadow-none">
+        <Button variant="ghost" size="sm" className="h-8 shadow-none">
           <a
             href="https://github.com/area44/astro-shadcn-ui-template"
             target="_blank"
             rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 h-8"
           >
-            <Github />
+            <Icons.gitHub />
             <span class="text-muted-foreground w-fit text-xs tabular-nums">
-              {starCount}
+              {StarCount}
             </span>
           </a>
-
-          <ThemeToggle />
         </Button>
+        <Separator orientation="vertical" />
+        <ThemeToggle />
       </div>
     </div>
   </div>

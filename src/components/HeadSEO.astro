@@ -6,8 +6,6 @@ interface Props {
   description?: string;
   ogImage?: string;
   type?: "website" | "article";
-  publishedTime?: string;
-  modifiedTime?: string;
 }
 
 const {
@@ -15,8 +13,6 @@ const {
   description = "Default description for your website.",
   ogImage = "/og-image.png",
   type = "website",
-  publishedTime,
-  modifiedTime,
 } = Astro.props;
 
 // ---- Safe URL helpers ----

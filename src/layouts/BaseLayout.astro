@@ -1,9 +1,9 @@
 ---
 import { cn } from "@/lib/utils";
 
-import Footer from "@/components/Footer.astro";
-import Header from "@/components/Header.astro";
 import HeadSEO from "@/components/HeadSEO.astro";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 
 const { title, description, ogImage } = Astro.props;
 ---
@@ -14,6 +14,18 @@ const { title, description, ogImage } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <HeadSEO title={title} description={description} ogImage={ogImage} />
+    <script is:inline>
+      (() => {
+        try {
+          const stored = localStorage.getItem("theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          const dark = stored ? stored === "dark" : prefersDark;
+          document.documentElement.classList.toggle("dark", dark);
+        } catch {}
+      })();
+    </script>
   </head>
   <body
     class={cn(
@@ -21,7 +33,7 @@ const { title, description, ogImage } = Astro.props;
     )}
   >
     <div class="bg-background relative z-10 flex min-h-svh flex-col">
-      <Header />
+      <Header client:load />
       <main class="flex flex-1 flex-col">
         <slot />
       </main>

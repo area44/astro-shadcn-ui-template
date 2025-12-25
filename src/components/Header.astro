@@ -10,10 +10,10 @@ const res = await fetch(
 );
 const json = await res.json();
 
+const stars = Number(json?.stargazers_count ?? 0);
+
 const StarCount =
-  json.stargazers_count >= 1000
-    ? `${Math.round(json.stargazers_count / 1000)}k`
-    : json.stargazers_count.toLocaleString();
+  stars >= 1000 ? `${Math.round(stars / 1000)}k` : stars.toLocaleString();
 ---
 
 <header class="bg-background sticky top-0 z-50 w-full">
@@ -21,6 +21,7 @@ const StarCount =
     <div
       class="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:h-4!"
     >
+      <!-- Mobile nevigation -->
       <Button variant="ghost" size="icon" className="size-8 flex">
         <a href="/">
           <HomeIcon className="size-5" />
@@ -28,12 +29,14 @@ const StarCount =
         </a>
       </Button>
 
-      <nav class="items-center gap-0 hidden lg:flex">
+      <!-- Main negivation -->
+      <nav class="items-center gap-0 hidden lg:flex px-2.5">
         <Button variant="ghost">
           <a
             href="https://astro.build"
             target="_blank"
             rel="noopener noreferrer"
+            class="relative items-center"
           >
             Astro
           </a>
@@ -43,6 +46,7 @@ const StarCount =
             href="https://ui.shadcn.com"
             target="_blank"
             rel="noopener noreferrer"
+            class="relative items-center"
           >
             shadcn/ui
           </a>
@@ -63,7 +67,7 @@ const StarCount =
             </span>
           </a>
         </Button>
-        <Separator orientation="vertical" />
+        <Separator orientation="vertical" className="my-auto" />
         <ThemeToggle />
       </div>
     </div>

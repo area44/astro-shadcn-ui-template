@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 export function MobileNav({ className }: { className?: string }) {
   const [open, setOpen] = React.useState(false);

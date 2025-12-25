@@ -13,7 +13,7 @@ function getInitialTheme(): Theme {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-export default function ThemeToggle() {
+export const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = React.useState<Theme>(getInitialTheme);
 
   React.useEffect(() => {
@@ -52,4 +52,4 @@ export default function ThemeToggle() {
       <span className="sr-only">Toggle theme</span>
     </Button>
   );
-}
+};

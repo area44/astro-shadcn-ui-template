@@ -11,13 +11,15 @@ interface Props {
 const {
   title = "Default Site Title",
   description = "Default description for your website.",
-  ogImage = "/og-image.png",
+  ogImage,
   type = "website",
-} = Astro.props;
+} = Astro.props as Props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
-const ogImageURL = ogImage ?? new URL("og-image.png", canonicalURL).toString();
-const faviconURL = new URL("favicon.svg", canonicalURL).toString();
+const ogImageURL = ogImage
+  ? new URL(ogImage, Astro.site).toString()
+  : new URL("og-image.png", canonicalURL).toString();
+const faviconURL = new URL("/favicon.svg", Astro.site).toString();
 ---
 
 <!-- Basic -->
@@ -32,7 +34,6 @@ const faviconURL = new URL("favicon.svg", canonicalURL).toString();
 
 <!-- Title -->
 <title>{title}</title>
-<meta name="title" content={title} />
 <meta name="description" content={description} />
 
 <!-- Open Graph -->
@@ -44,7 +45,6 @@ const faviconURL = new URL("favicon.svg", canonicalURL).toString();
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content={canonicalURL} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImageURL} />

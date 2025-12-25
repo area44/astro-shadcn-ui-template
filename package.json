@@ -1,6 +1,6 @@
 {
   "name": "@area44/astro-shadcn-ui-template",
-  "version": "25.12.23",
+  "version": "25.12.26",
   "description": "An Astro template for building apps with shadcn/ui components, Tailwind CSS",
   "license": "MIT",
   "author": {

@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+const base = import.meta.env.BASE_URL;
 
 interface Props {
   title?: string;
@@ -16,8 +17,9 @@ const {
 } = Astro.props;
 
 // ---- Safe URL helpers ----
-const site = Astro.site;
-const pathname = Astro.url.pathname;
+const site = Astro.site ? new URL(base, Astro.site) : undefined;
+
+const pathname = Astro.url.pathname.replace(base, "");
 
 const canonicalURL = site
   ? new URL(pathname, site).toString()

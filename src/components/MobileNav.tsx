@@ -49,7 +49,7 @@ export function MobileNav({ className }: { className?: string }) {
             <div className="text-muted-foreground text-sm font-medium">Menu</div>
 
             <div className="flex flex-col gap-3">
-              <a href="/" className="text-2xl font-medium" onClick={() => setOpen(false)}>
+              <a href="#" className="text-2xl font-medium" onClick={() => setOpen(false)}>
                 Home
               </a>
 
@@ -62,7 +62,14 @@ export function MobileNav({ className }: { className?: string }) {
               >
                 Astro
               </a>
-
+              <a
+                href="https://tailwindcss.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl font-medium"
+              >
+                Tailwind CSS
+              </a>
               <a
                 href="https://ui.shadcn.com"
                 target="_blank"

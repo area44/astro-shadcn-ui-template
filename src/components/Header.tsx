@@ -33,7 +33,7 @@ export function Header() {
       <div className="container-wrapper 3xl:fixed:px-0 px-6">
         <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:h-4!">
           <MobileNav className="flex lg:hidden" />
-          <a href="/">
+          <a href="#">
             <Button variant="ghost" size="icon" className="hidden size-8 lg:flex">
               <HomeIcon className="size-5" />
               <span className="sr-only">Home</span>

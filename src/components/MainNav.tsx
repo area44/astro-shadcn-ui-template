@@ -15,6 +15,16 @@ export function MainNav({ className, ...props }: React.ComponentProps<"nav">) {
         </Button>
       </a>
       <a
+        href="https://tailwindcss.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative items-center"
+      >
+        <Button variant="ghost" size="sm" className="px-2.5">
+          Tailwind CSS
+        </Button>
+      </a>
+      <a
         href="https://ui.shadcn.com"
         target="_blank"
         rel="noopener noreferrer"

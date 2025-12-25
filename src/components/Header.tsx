@@ -33,30 +33,29 @@ export function Header() {
       <div className="container-wrapper 3xl:fixed:px-0 px-6">
         <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:h-4!">
           <MobileNav className="flex lg:hidden" />
-
-          <Button variant="ghost" size="icon" className="hidden size-8 lg:flex">
-            <a href="/">
+          <a href="/">
+            <Button variant="ghost" size="icon" className="hidden size-8 lg:flex">
               <HomeIcon className="size-5" />
               <span className="sr-only">Home</span>
-            </a>
-          </Button>
+            </Button>
+          </a>
 
           <MainNav className="hidden lg:flex" />
 
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
-            <Button variant="ghost" size="sm" className="h-8 shadow-none">
-              <a
-                href="https://github.com/area44/astro-shadcn-ui-template"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 h-8"
-              >
+            <a
+              href="https://github.com/area44/astro-shadcn-ui-template"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 h-8"
+            >
+              <Button variant="ghost" size="sm" className="h-8 shadow-none">
                 <Icons.gitHub />
                 <span className="text-muted-foreground w-fit text-xs tabular-nums">
                   {starCount}
                 </span>
-              </a>
-            </Button>
+              </Button>{" "}
+            </a>
 
             <Separator orientation="vertical" className="my-auto" />
 

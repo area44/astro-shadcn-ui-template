@@ -4,27 +4,27 @@ import { Button } from "@/components/ui/button";
 export function MainNav({ className, ...props }: React.ComponentProps<"nav">) {
   return (
     <nav className={cn("items-center gap-0", className)} {...props}>
-      <Button variant="ghost">
-        <a
-          href="https://astro.build"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative items-center"
-        >
+      <a
+        href="https://astro.build"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative items-center"
+      >
+        <Button variant="ghost" size="sm" className="px-2.5">
           Astro
-        </a>
-      </Button>
-
-      <Button variant="ghost">
-        <a
-          href="https://ui.shadcn.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative items-center"
-        >
+        </Button>
+      </a>
+      <a
+        href="https://ui.shadcn.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative items-center"
+      >
+        <Button variant="ghost" size="sm" className="px-2.5">
+          {" "}
           shadcn/ui
-        </a>
-      </Button>
+        </Button>
+      </a>
     </nav>
   );
 }

@@ -19,7 +19,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImageURL = ogImage
   ? new URL(ogImage, Astro.site).toString()
   : new URL("og-image.png", canonicalURL).toString();
-const faviconURL = new URL("/favicon.svg", Astro.site).toString();
+const faviconURL = new URL("favicon.svg", canonicalURL).toString();
 ---
 
 <!-- Basic -->

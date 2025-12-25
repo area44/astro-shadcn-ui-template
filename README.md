@@ -21,7 +21,7 @@ Open your browser and go to [http://localhost:4321](http://localhost:4321) to se
 
 ## Adding Components
 
-shadcn/ui provides pre-built, accessible UI components. To add one:
+`shadcn/ui` provides pre-built, accessible UI components. To add one:
 
 1. Follow the official [Astro installation guide](https://ui.shadcn.com/docs/installation/astro).
 2. Pick a component (e.g., [Accordion](https://ui.shadcn.com/docs/components/accordion), [Dialog](https://ui.shadcn.com/docs/components/dialog)) and follow the usage instructions.

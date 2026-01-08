@@ -12,4 +12,8 @@
     "**/.astro",
     "**/.netlify",
   ],
+  "experimentalSortImports": true,
+  "experimentalTailwindcss": {
+    "functions": ["clsx", "cn", "cva", "tw"],
+  },
 }

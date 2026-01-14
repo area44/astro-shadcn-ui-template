@@ -16,7 +16,7 @@
     "dev": "astro dev",
     "preview": "astro preview",
     "start": "astro dev",
-    "format": "oxfmt",
+    "fmt": "oxfmt",
     "lint": "oxlint",
     "check": "oxlint && oxfmt"
   },

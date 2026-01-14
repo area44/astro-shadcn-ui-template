@@ -10,10 +10,10 @@
     "**/.github",
     "**/.next",
     "**/.astro",
-    "**/.netlify"
+    "**/.netlify",
   ],
   "experimentalSortPackageJson": {
-    "sortScripts": true
+    "sortScripts": true,
   },
   "experimentalSortImports": {
     "groups": [
@@ -23,12 +23,12 @@
       ["internal", "internal-type"],
       ["parent", "parent-type"],
       ["sibling", "sibling-type"],
-      ["index", "index-type"]
-    ]
+      ["index", "index-type"],
+    ],
   },
   "experimentalTailwindcss": {
     "stylesheet": "./src/styles/global.css",
     "attributes": ["class", "className"],
-    "functions": ["clsx", "cn", "cva", "tv"]
-  }
+    "functions": ["clsx", "cn", "cva", "tv"],
+  },
 }

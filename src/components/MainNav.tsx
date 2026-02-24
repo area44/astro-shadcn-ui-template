@@ -1,40 +1,30 @@
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+
+const links = [
+  { href: "https://astro.build", label: "Astro" },
+  { href: "https://tailwindcss.com", label: "Tailwind CSS" },
+  { href: "https://ui.shadcn.com", label: "shadcn/ui" },
+];
 
 export function MainNav({ className, ...props }: React.ComponentProps<"nav">) {
   return (
-    <nav className={cn("items-center gap-0", className)} {...props}>
-      <a
-        href="https://astro.build"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative items-center"
-      >
-        <Button variant="ghost" size="sm" className="px-2.5">
-          Astro
-        </Button>
-      </a>
-      <a
-        href="https://tailwindcss.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative items-center"
-      >
-        <Button variant="ghost" size="sm" className="px-2.5">
-          Tailwind CSS
-        </Button>
-      </a>
-      <a
-        href="https://ui.shadcn.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative items-center"
-      >
-        <Button variant="ghost" size="sm" className="px-2.5">
-          {" "}
-          shadcn/ui
-        </Button>
-      </a>
+    <nav
+      aria-label="Main navigation"
+      className={cn("flex items-center gap-2", className)}
+      {...props}
+    >
+      {links.map((link) => (
+        <a
+          key={link.href}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonVariants({ variant: "ghost", size: "sm" })}
+        >
+          {link.label}
+        </a>
+      ))}
     </nav>
   );
 }

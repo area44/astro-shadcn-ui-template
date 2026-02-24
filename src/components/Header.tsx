@@ -14,16 +14,11 @@ export function Header() {
   React.useEffect(() => {
     async function fetchStars() {
       try {
-        const res = await fetch(
-          "https://api.github.com/repos/area44/astro-shadcn-ui-template"
-        );
+        const res = await fetch("https://api.github.com/repos/area44/astro-shadcn-ui-template");
         const json = await res.json();
 
         const stars = Number(json?.stargazers_count ?? 0);
-        const formatted =
-          stars >= 1000
-            ? `${Math.round(stars / 1000)}k`
-            : stars.toLocaleString();
+        const formatted = stars >= 1000 ? `${Math.round(stars / 1000)}k` : stars.toLocaleString();
 
         setStarCount(formatted);
       } catch {
@@ -44,7 +39,7 @@ export function Header() {
             href="#"
             className={cn(
               buttonVariants({ variant: "ghost", size: "icon" }),
-              "hidden size-8 lg:flex"
+              "hidden size-8 lg:flex",
             )}
           >
             <HomeIcon className="size-5" />
@@ -60,13 +55,11 @@ export function Header() {
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: "ghost", size: "sm" }),
-                "inline-flex items-center gap-2 h-8 shadow-none"
+                "inline-flex items-center gap-2 h-8 shadow-none",
               )}
             >
               <Icons.gitHub />
-              <span className="text-muted-foreground w-fit text-xs tabular-nums">
-                {starCount}
-              </span>
+              <span className="text-muted-foreground w-fit text-xs tabular-nums">{starCount}</span>
             </a>
 
             <Separator orientation="vertical" className="my-auto" />

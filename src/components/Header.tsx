@@ -1,13 +1,14 @@
-import * as React from "react";
 import { HomeIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
+import * as React from "react";
+
 import { Icons } from "@/components/Icons";
-import { MobileNav } from "@/components/MobileNav";
 import { MainNav } from "@/components/MainNav";
+import { MobileNav } from "@/components/MobileNav";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { Separator } from "@/components/ui/separator";
 import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/lib/config";
+import { cn } from "@/lib/utils";
 
 export function Header() {
   const [starCount, setStarCount] = React.useState<string>("—");
@@ -39,9 +40,9 @@ export function Header() {
   }, []);
 
   return (
-    <header className="bg-background sticky top-0 z-50 w-full">
-      <div className="container-wrapper 3xl:fixed:px-0 px-6">
-        <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:h-4!">
+    <header className="sticky top-0 z-50 w-full bg-background">
+      <div className="container-wrapper px-6 3xl:fixed:px-0">
+        <div className="flex h-(--header-height) items-center **:data-[slot=separator]:h-4! 3xl:fixed:container">
           <MobileNav className="flex lg:hidden" />
 
           <a
@@ -64,11 +65,11 @@ export function Header() {
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: "ghost", size: "sm" }),
-                "inline-flex items-center gap-2 h-8 shadow-none",
+                "inline-flex h-8 items-center gap-2 shadow-none",
               )}
             >
               <Icons.gitHub />
-              <span className="text-muted-foreground w-fit text-xs tabular-nums">{starCount}</span>
+              <span className="w-fit text-xs text-muted-foreground tabular-nums">{starCount}</span>
             </a>
 
             <Separator orientation="vertical" className="my-auto" />

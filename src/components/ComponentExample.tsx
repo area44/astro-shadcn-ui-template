@@ -1,5 +1,34 @@
+import {
+  PlusIcon,
+  BluetoothIcon,
+  MoreVerticalIcon,
+  FileIcon,
+  FolderIcon,
+  FolderOpenIcon,
+  FileCodeIcon,
+  MoreHorizontalIcon,
+  FolderSearchIcon,
+  SaveIcon,
+  DownloadIcon,
+  EyeIcon,
+  LayoutIcon,
+  PaletteIcon,
+  SunIcon,
+  MoonIcon,
+  MonitorIcon,
+  UserIcon,
+  CreditCardIcon,
+  SettingsIcon,
+  KeyboardIcon,
+  LanguagesIcon,
+  BellIcon,
+  MailIcon,
+  ShieldIcon,
+  HelpCircleIcon,
+  FileTextIcon,
+  LogOutIcon,
+} from "lucide-react";
 import * as React from "react";
-import { cn } from "@/lib/utils";
 
 import {
   AlertDialog,
@@ -60,36 +89,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  PlusIcon,
-  BluetoothIcon,
-  MoreVerticalIcon,
-  FileIcon,
-  FolderIcon,
-  FolderOpenIcon,
-  FileCodeIcon,
-  MoreHorizontalIcon,
-  FolderSearchIcon,
-  SaveIcon,
-  DownloadIcon,
-  EyeIcon,
-  LayoutIcon,
-  PaletteIcon,
-  SunIcon,
-  MoonIcon,
-  MonitorIcon,
-  UserIcon,
-  CreditCardIcon,
-  SettingsIcon,
-  KeyboardIcon,
-  LanguagesIcon,
-  BellIcon,
-  MailIcon,
-  ShieldIcon,
-  HelpCircleIcon,
-  FileTextIcon,
-  LogOutIcon,
-} from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function ComponentExample() {
   return (
@@ -104,7 +104,7 @@ function CardExample() {
   return (
     <Example title="Card" className="items-center justify-center">
       <Card className="relative w-full max-w-sm overflow-hidden pt-0">
-        <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
+        <div className="absolute inset-0 z-30 aspect-video bg-primary opacity-50 mix-blend-color" />
         <img
           src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Photo by mymind on Unsplash"
@@ -471,7 +471,7 @@ function FormExample() {
 
 function ExampleWrapper({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div className="bg-background w-full">
+    <div className="w-full bg-background">
       <div
         data-slot="example-wrapper"
         className={cn(
@@ -504,11 +504,11 @@ function Example({
       )}
       {...props}
     >
-      <div className="text-muted-foreground px-1.5 py-2 text-xs font-medium">{title}</div>
+      <div className="px-1.5 py-2 text-xs font-medium text-muted-foreground">{title}</div>
       <div
         data-slot="example-content"
         className={cn(
-          "bg-background text-foreground flex min-w-0 flex-1 flex-col items-start gap-6 border border-dashed p-4 sm:p-6 *:[div:not([class*='w-'])]:w-full",
+          "flex min-w-0 flex-1 flex-col items-start gap-6 border border-dashed bg-background p-4 text-foreground sm:p-6 *:[div:not([class*='w-'])]:w-full",
           className,
         )}
       >

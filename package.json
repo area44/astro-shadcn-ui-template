@@ -13,12 +13,12 @@
   },
   "scripts": {
     "build": "astro build",
+    "check": "oxlint && oxfmt",
     "dev": "astro dev",
-    "preview": "astro preview",
-    "start": "astro dev",
     "fmt": "oxfmt",
     "lint": "oxlint",
-    "check": "oxlint && oxfmt"
+    "preview": "astro preview",
+    "start": "astro dev"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",

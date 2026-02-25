@@ -53,7 +53,7 @@ export function MobileNav({ className }: { className?: string }) {
               <a href="/" className="text-2xl font-medium" onClick={() => setOpen(false)}>
                 Home
               </a>
-              
+
               {siteConfig.navItems.map((item) => (
                 <a
                   href={item.href}

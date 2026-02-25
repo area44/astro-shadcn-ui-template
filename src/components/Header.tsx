@@ -20,19 +20,14 @@ export function Header() {
 
         if (!owner || !repo) return;
 
-        const res = await fetch(
-          `https://api.github.com/repos/${owner}/${repo}`
-        );
+        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
 
         if (!res.ok) return;
 
         const json: { stargazers_count?: number } = await res.json();
         const stars = json.stargazers_count ?? 0;
 
-        const formatted =
-          stars >= 1000
-            ? `${Math.round(stars / 1000)}k`
-            : stars.toLocaleString();
+        const formatted = stars >= 1000 ? `${Math.round(stars / 1000)}k` : stars.toLocaleString();
 
         setStarCount(formatted);
       } catch {

@@ -3,9 +3,9 @@ export type SiteConfig = {
   description: string;
   url: string;
   author: {
-    name: string,
-    url: string,
-  },
+    name: string;
+    url: string;
+  };
   links: {
     github: string;
   };

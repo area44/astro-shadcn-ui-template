@@ -2,6 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { siteConfig } from "@/lib/config";
 
 export function MobileNav({ className }: { className?: string }) {
   const [open, setOpen] = React.useState(false);
@@ -12,7 +13,7 @@ export function MobileNav({ className }: { className?: string }) {
         <Button
           variant="ghost"
           className={cn(
-            "extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 p-0! hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
+            "extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 p-0! hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent",
             className,
           )}
         >
@@ -49,36 +50,21 @@ export function MobileNav({ className }: { className?: string }) {
             <div className="text-muted-foreground text-sm font-medium">Menu</div>
 
             <div className="flex flex-col gap-3">
-              <a href="#" className="text-2xl font-medium" onClick={() => setOpen(false)}>
+              <a href="/" className="text-2xl font-medium" onClick={() => setOpen(false)}>
                 Home
               </a>
 
-              <a
-                href="https://astro.build"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-                className="text-2xl font-medium"
-              >
-                Astro
-              </a>
-              <a
-                href="https://tailwindcss.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-2xl font-medium"
-              >
-                Tailwind CSS
-              </a>
-              <a
-                href="https://ui.shadcn.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-                className="text-2xl font-medium"
-              >
-                shadcn/ui
-              </a>
+              {siteConfig.navItems.map((item) => (
+                <a
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  onClick={() => setOpen(false)}
+                  className="text-2xl font-medium"
+                >
+                  {item.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>

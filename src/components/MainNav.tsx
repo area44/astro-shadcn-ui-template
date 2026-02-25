@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
+import { cn } from "@/lib/utils";
 
 export function MainNav({ className, ...props }: React.ComponentProps<"nav">) {
   return (

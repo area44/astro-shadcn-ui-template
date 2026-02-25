@@ -11,7 +11,6 @@ export function MainNav({ className, ...props }: React.ComponentProps<"nav">) {
     >
       {siteConfig.navItems.map((item) => {
         const isExternal = item.external;
-
         return (
           <a
             href={item.href}

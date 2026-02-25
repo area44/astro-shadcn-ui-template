@@ -7,6 +7,7 @@ import { MainNav } from "@/components/MainNav";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Separator } from "@/components/ui/separator";
 import { buttonVariants } from "@/components/ui/button";
+import { siteConfig } from "@/lib/config";
 
 export function Header() {
   const [starCount, setStarCount] = React.useState<string>("—");
@@ -14,11 +15,24 @@ export function Header() {
   React.useEffect(() => {
     async function fetchStars() {
       try {
-        const res = await fetch("https://api.github.com/repos/area44/astro-shadcn-ui-template");
-        const json = await res.json();
+        const githubUrl = new URL(siteConfig.links.github);
+        const [, owner, repo] = githubUrl.pathname.split("/");
 
-        const stars = Number(json?.stargazers_count ?? 0);
-        const formatted = stars >= 1000 ? `${Math.round(stars / 1000)}k` : stars.toLocaleString();
+        if (!owner || !repo) return;
+
+        const res = await fetch(
+          `https://api.github.com/repos/${owner}/${repo}`
+        );
+
+        if (!res.ok) return;
+
+        const json: { stargazers_count?: number } = await res.json();
+        const stars = json.stargazers_count ?? 0;
+
+        const formatted =
+          stars >= 1000
+            ? `${Math.round(stars / 1000)}k`
+            : stars.toLocaleString();
 
         setStarCount(formatted);
       } catch {
@@ -36,7 +50,7 @@ export function Header() {
           <MobileNav className="flex lg:hidden" />
 
           <a
-            href="#"
+            href="/"
             className={cn(
               buttonVariants({ variant: "ghost", size: "icon" }),
               "hidden size-8 lg:flex",
@@ -50,7 +64,7 @@ export function Header() {
 
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <a
-              href="https://github.com/area44/astro-shadcn-ui-template"
+              href={siteConfig.links.github}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(

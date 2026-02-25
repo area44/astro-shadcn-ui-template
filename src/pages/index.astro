@@ -1,11 +1,12 @@
 ---
 import { ComponentExample } from "@/components/ComponentExample";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { siteConfig } from "@/lib/config";
 ---
 
 <BaseLayout
-  title="Astro shadcn/ui template"
-  description="This template helps you build apps with Astro, Tailwind CSS, and shadcn/ui."
+  title={siteConfig.name}
+  description={siteConfig.description}
 >
   <ComponentExample client:load />
 </BaseLayout>

@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/config";
+
 export function Footer() {
   return (
     <footer className="group-has-[.section-soft]/body:bg-surface/40 3xl:fixed:bg-transparent dark:bg-transparent">
@@ -6,16 +8,16 @@ export function Footer() {
           <div className="text-muted-foreground w-full px-1 text-center text-xs leading-loose sm:text-sm">
             Built by{" "}
             <a
-              href="https://github.com/area44"
+              href={siteConfig.author.url}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
-              AREA44
+              {siteConfig.author.name}
             </a>{" "}
             . The source code is available on{" "}
             <a
-              href="https://github.com/area44/astro-shadcn-ui-template"
+              href={siteConfig.links.github}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"

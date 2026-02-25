@@ -9,7 +9,7 @@ export function MobileNav({ className }: { className?: string }) {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger>
         <Button
           variant="ghost"
           className={cn(
@@ -50,15 +50,19 @@ export function MobileNav({ className }: { className?: string }) {
             <div className="text-muted-foreground text-sm font-medium">Menu</div>
 
             <div className="flex flex-col gap-3">
-              {siteConfig.navItems.map((link) => (
+              <a href="/" className="text-2xl font-medium" onClick={() => setOpen(false)}>
+                Home
+              </a>
+              
+              {siteConfig.navItems.map((item) => (
                 <a
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
                   onClick={() => setOpen(false)}
                   className="text-2xl font-medium"
                 >
-                  {link.label}
+                  {item.label}
                 </a>
               ))}
             </div>

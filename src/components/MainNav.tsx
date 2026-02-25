@@ -2,10 +2,7 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
 
-export function MainNav({
-  className,
-  ...props
-}: React.ComponentProps<"nav">) {
+export function MainNav({ className, ...props }: React.ComponentProps<"nav">) {
   return (
     <nav
       aria-label="Main navigation"

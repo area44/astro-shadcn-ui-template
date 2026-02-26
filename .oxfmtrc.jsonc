@@ -12,9 +12,6 @@
     "**/.astro",
     "**/.netlify",
   ],
-  "sortPackageJson": {
-    "sortScripts": true,
-  },
   "sortImports": {
     "groups": [
       "type-import",

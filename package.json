@@ -12,13 +12,13 @@
     "url": "https://github.com/area44/astro-shadcn-ui-template"
   },
   "scripts": {
-    "build": "astro build",
-    "check": "oxlint && oxfmt",
     "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "start": "astro dev",
     "fmt": "oxfmt",
     "lint": "oxlint",
-    "preview": "astro preview",
-    "start": "astro dev"
+    "check": "oxlint && oxfmt"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",

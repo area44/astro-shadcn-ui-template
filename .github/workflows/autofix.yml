@@ -16,4 +16,4 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Run autofix
-        uses: area44/workflows/autofix@inline-detect-env-15777451127287941949
+        uses: area44/workflows/autofix@improve-composite-actions-7110939697792442684

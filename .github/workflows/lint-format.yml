@@ -1,4 +1,4 @@
-name: autofix.ci
+name: Lint/Format
 
 on:
   push:
@@ -9,11 +9,11 @@ permissions:
   contents: write
 
 jobs:
-  autofix:
+  lint-format:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Run autofix
-        uses: area44/workflows/autofix@v4.0.2
+      - name: Run lint/format scripts
+        uses: area44/workflows/lint-format@v4.1.0

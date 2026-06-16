@@ -26,7 +26,8 @@ export const ThemeToggle: React.FC = () => {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
     const listener = () => {
-      if (!localStorage.getItem("theme")) {
+      const storedTheme = localStorage.getItem("theme");
+      if (!storedTheme) {
         setTheme(media.matches ? "dark" : "light");
       }
     };

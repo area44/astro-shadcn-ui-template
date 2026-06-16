@@ -1,0 +1,14 @@
+
+> @area44/astro-shadcn-ui-template@26.02.24 dev
+> astro dev
+
+[vite] connected.
+01:50:43 [types] Generated 1ms
+[vite] connected.
+01:50:43 [vite] Re-optimizing dependencies because vite config has changed
+ astro  v6.4.6 ready in 2153 ms
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+01:50:43 watching for file changes...
+01:51:15 [200] / 200ms
+01:51:42 [200] / 61ms

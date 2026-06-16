@@ -12,7 +12,7 @@ export function MainNav({ className, ...props }: React.ComponentProps<"nav">) {
       {siteConfig.navItems.map((item) => {
         const isExternal = item.external;
         return (
-          <a
+          <a key={item.href}
             href={item.href}
             {...(isExternal
               ? {

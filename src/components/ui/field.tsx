@@ -71,7 +71,6 @@ function Field({
 }: React.ComponentProps<"div"> & VariantProps<typeof fieldVariants>) {
   return (
     <div
-      role="group"
       data-slot="field"
       data-orientation={orientation}
       className={cn(fieldVariants({ orientation }), className)}
@@ -170,16 +169,16 @@ function FieldError({
 }: React.ComponentProps<"div"> & {
   errors?: Array<{ message?: string } | undefined>;
 }) {
+  if (!children && !errors?.length) {
+    return null;
+  }
+
   const content = useMemo(() => {
     if (children) {
       return children;
     }
 
-    if (!errors?.length) {
-      return null;
-    }
-
-    const uniqueErrors = [...new Map(errors.map((error) => [error?.message, error])).values()];
+    const uniqueErrors = [...new Map(errors!.map((error) => [error?.message, error])).values()];
 
     if (uniqueErrors?.length == 1) {
       return uniqueErrors[0]?.message;
@@ -187,14 +186,10 @@ function FieldError({
 
     return (
       <ul className="ml-4 flex list-disc flex-col gap-1">
-        {uniqueErrors.map((error, index) => error?.message && <li key={index}>{error.message}</li>)}
+        {uniqueErrors.map((error) => error?.message && <li key={error.message}>{error.message}</li>)}
       </ul>
     );
   }, [children, errors]);
-
-  if (!content) {
-    return null;
-  }
 
   return (
     <div

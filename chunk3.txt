@@ -1,0 +1,170 @@
+                            <DropdownMenuPortal>
+                              <DropdownMenuSubContent>
+                                <DropdownMenuGroup>
+                                  <DropdownMenuLabel>Notification Types</DropdownMenuLabel>
+                                  <DropdownMenuCheckboxItem
+                                    checked={notifications.push}
+                                    onCheckedChange={(checked) =>
+                                      setNotifications({
+                                        ...notifications,
+                                        push: checked === true,
+                                      })
+                                    }
+                                  >
+                                    <BellIcon />
+                                    Push Notifications
+                                  </DropdownMenuCheckboxItem>
+                                  <DropdownMenuCheckboxItem
+                                    checked={notifications.email}
+                                    onCheckedChange={(checked) =>
+                                      setNotifications({
+                                        ...notifications,
+                                        email: checked === true,
+                                      })
+                                    }
+                                  >
+                                    <MailIcon />
+                                    Email Notifications
+                                  </DropdownMenuCheckboxItem>
+                                </DropdownMenuGroup>
+                              </DropdownMenuSubContent>
+                            </DropdownMenuPortal>
+                          </DropdownMenuSub>
+                        </DropdownMenuGroup>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuGroup>
+                          <DropdownMenuItem>
+                            <ShieldIcon />
+                            Privacy & Security
+                          </DropdownMenuItem>
+                        </DropdownMenuGroup>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <HelpCircleIcon />
+                    Help & Support
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <FileTextIcon />
+                    Documentation
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem variant="destructive">
+                    <LogOutIcon />
+                    Sign Out
+                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </CardAction>
+        </CardHeader>
+        <CardContent>
+          <form>
+            <FieldGroup>
+              <div className="grid grid-cols-2 gap-4">
+                <Field>
+                  <FieldLabel htmlFor="small-form-name">Name</FieldLabel>
+                  <Input id="small-form-name" placeholder="Enter your name" required />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="small-form-role">Role</FieldLabel>
+                  <Select items={roleItems} defaultValue={null}>
+                    <SelectTrigger id="small-form-role">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        {roleItems.map((item) => (
+                          <SelectItem key={item.value} value={item.value}>
+                            {item.label}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </Field>
+              </div>
+              <Field>
+                <FieldLabel htmlFor="small-form-framework">Framework</FieldLabel>
+                <Combobox items={frameworks}>
+                  <ComboboxInput
+                    id="small-form-framework"
+                    placeholder="Select a framework"
+                    required
+                  />
+                  <ComboboxContent>
+                    <ComboboxEmpty>No frameworks found.</ComboboxEmpty>
+                    <ComboboxList>
+                      {(item) => (
+                        <ComboboxItem key={item} value={item}>
+                          {item}
+                        </ComboboxItem>
+                      )}
+                    </ComboboxList>
+                  </ComboboxContent>
+                </Combobox>
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="small-form-comments">Comments</FieldLabel>
+                <Textarea id="small-form-comments" placeholder="Add any additional comments" />
+              </Field>
+              <Field orientation="horizontal">
+                <Button type="submit">Submit</Button>
+                <Button variant="outline" type="button">
+                  Cancel
+                </Button>
+              </Field>
+            </FieldGroup>
+          </form>
+        </CardContent>
+      </Card>
+    </Example>
+  );
+}
+
+function ExampleWrapper({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div className="w-full bg-background">
+      <div
+        data-slot="example-wrapper"
+        className={cn(
+          "mx-auto grid min-h-screen w-full max-w-5xl min-w-0 content-center items-start gap-8 p-4 pt-2 sm:gap-12 sm:p-6 md:grid-cols-2 md:gap-8 lg:p-12 2xl:max-w-6xl",
+
+          className,
+        )}
+        {...props}
+      />
+    </div>
+  );
+}
+
+function Example({
+  title,
+  children,
+  className,
+  containerClassName,
+  ...props
+}: React.ComponentProps<"div"> & {
+  title: string;
+  containerClassName?: string;
+}) {
+  return (
+    <div
+      data-slot="example"
+      className={cn(
+        "mx-auto flex w-full max-w-lg min-w-0 flex-col gap-1 self-stretch lg:max-w-none",
+        containerClassName,
+      )}
+      {...props}
+    >
+      <div className="px-1.5 py-2 text-xs font-medium text-muted-foreground">{title}</div>
+      <div
+        data-slot="example-content"
+        className={cn(

@@ -107,7 +107,7 @@ function CardExample() {
         <div className="absolute inset-0 z-30 aspect-video bg-primary opacity-50 mix-blend-color" />
         <img
           src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Photo by mymind on Unsplash"
+          alt="Abstract wavy orange and purple background"
           title="Photo by mymind on Unsplash"
           className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale"
         />
@@ -178,7 +178,36 @@ function FormExample() {
                 <MoreVerticalIcon />
                 <span className="sr-only">More options</span>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
+              <FormExampleDropdownMenu
+                notifications={notifications}
+                setNotifications={setNotifications}
+                theme={theme}
+                setTheme={setTheme}
+              />
+            </DropdownMenu>
+          </CardAction>
+        </CardHeader>
+        <CardContent>
+          <FormExampleContent />
+        </CardContent>
+      </Card>
+    </Example>
+  );
+}
+
+function FormExampleDropdownMenu({
+  notifications,
+  setNotifications,
+  theme,
+  setTheme
+}: {
+  notifications: { email: boolean; sms: boolean; push: boolean };
+  setNotifications: (n: any) => void;
+  theme: string;
+  setTheme: (t: string) => void;
+}) {
+  return (
+    <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>File</DropdownMenuLabel>
                   <DropdownMenuItem>
@@ -231,7 +260,7 @@ function FormExample() {
                         <DropdownMenuGroup>
                           <DropdownMenuItem>
                             <FolderSearchIcon />
-                            Browse...
+                            Browse…
                           </DropdownMenuItem>
                         </DropdownMenuGroup>
                       </DropdownMenuSubContent>
@@ -402,11 +431,12 @@ function FormExample() {
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
               </DropdownMenuContent>
-            </DropdownMenu>
-          </CardAction>
-        </CardHeader>
-        <CardContent>
-          <form>
+  );
+}
+
+function FormExampleContent() {
+  return (
+    <form>
             <FieldGroup>
               <div className="grid grid-cols-2 gap-4">
                 <Field>
@@ -456,18 +486,16 @@ function FormExample() {
                 <Textarea id="small-form-comments" placeholder="Add any additional comments" />
               </Field>
               <Field orientation="horizontal">
-                <Button type="submit">Submit</Button>
+                <Button type="submit">Save changes</Button>
                 <Button variant="outline" type="button">
                   Cancel
                 </Button>
               </Field>
             </FieldGroup>
           </form>
-        </CardContent>
-      </Card>
-    </Example>
   );
 }
+
 
 function ExampleWrapper({ className, ...props }: React.ComponentProps<"div">) {
   return (

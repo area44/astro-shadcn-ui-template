@@ -11,7 +11,7 @@ import { siteConfig } from "@/lib/config";
 import { cn } from "@/lib/utils";
 
 export function Header() {
-  const [starCount, setStarCount] = React.useState<string>("—");
+  const [starCount, setStarCount] = React.useState<string | undefined>();
 
   React.useEffect(() => {
     async function fetchStars() {
@@ -68,8 +68,8 @@ export function Header() {
                 "inline-flex h-8 items-center gap-2 shadow-none",
               )}
             >
-              <Icons.gitHub />
-              <span className="w-fit text-xs text-muted-foreground tabular-nums">{starCount}</span>
+              <Icons.GitHub />
+              <span className="w-fit text-xs text-muted-foreground tabular-nums">{starCount ?? "—"}</span>
             </a>
 
             <Separator orientation="vertical" className="my-auto" />

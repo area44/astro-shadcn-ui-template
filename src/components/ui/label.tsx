@@ -13,7 +13,9 @@ function Label({ className, ...props }: React.ComponentProps<"label">) {
         className,
       )}
       {...props}
-    />
+    >
+      {props.children}
+    </label>
   );
 }
 

@@ -46,7 +46,7 @@ export function MobileNav({ className }: { className?: string }) {
         alignOffset={-16}
         sideOffset={12}
       >
-        <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
+        <div className="flex flex-col gap-12 overflow-auto p-6">
           <div className="flex flex-col gap-4">
             <div className="text-sm font-medium text-muted-foreground">Menu</div>
 
@@ -56,7 +56,7 @@ export function MobileNav({ className }: { className?: string }) {
               </a>
 
               {siteConfig.navItems.map((item) => (
-                <a
+                <a key={item.href}
                   href={item.href}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}

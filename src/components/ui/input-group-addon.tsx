@@ -41,7 +41,11 @@ function InputGroupAddon({
       type="button"
       data-slot="input-group-addon"
       data-align={align}
-      className={cn(inputGroupAddonVariants({ align }), "bg-transparent border-none p-0 cursor-default", className)}
+      className={cn(
+        inputGroupAddonVariants({ align }),
+        "cursor-default border-none bg-transparent p-0",
+        className,
+      )}
       onClick={handleFocus}
       {...props}
     />

@@ -69,7 +69,9 @@ export function Header() {
               )}
             >
               <Icons.GitHub />
-              <span className="w-fit text-xs text-muted-foreground tabular-nums">{starCount ?? "—"}</span>
+              <span className="w-fit text-xs text-muted-foreground tabular-nums">
+                {starCount ?? "—"}
+              </span>
             </a>
 
             <Separator orientation="vertical" className="my-auto" />

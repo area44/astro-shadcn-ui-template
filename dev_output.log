@@ -12,3 +12,9 @@
 01:50:43 watching for file changes...
 01:51:15 [200] / 200ms
 01:51:42 [200] / 61ms
+07:22:33 [watch] /src/styles/global.css, /src/components/MobileNav.tsx
+07:22:33 [watch] /src/styles/global.css, /src/components/MainNav.tsx
+07:22:33 [watch] /src/styles/global.css, /src/components/Header.tsx
+07:22:33 [watch] /src/styles/global.css, /src/components/ComponentExample.tsx
+07:22:33 [watch] /src/styles/global.css, /src/components/ui/field.tsx
+07:22:33 [watch] /src/styles/global.css, /src/components/ui/input-group-addon.tsx

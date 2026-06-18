@@ -11,6 +11,7 @@
     "**/.next",
     "**/.astro",
     "**/.netlify",
+    "**/*.gen.*"
   ],
   "sortImports": {
     "groups": [
@@ -20,12 +21,12 @@
       "value-internal",
       ["type-parent", "type-sibling", "type-index"],
       ["value-parent", "value-sibling", "value-index"],
-      "unknown",
-    ],
+      "unknown"
+    ]
   },
   "sortTailwindcss": {
     "stylesheet": "./src/styles/global.css",
     "attributes": ["class", "className"],
-    "functions": ["clsx", "cn", "cva", "tv"],
-  },
+    "functions": ["clsx", "cn", "cva", "tv"]
+  }
 }

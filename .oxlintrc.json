@@ -10,7 +10,7 @@
     "node",
     "promise",
     "vitest",
-    "vue",
+    "vue"
   ],
   "ignorePatterns": [
     "*.min.*",
@@ -23,5 +23,6 @@
     "**/.next",
     "**/.astro",
     "**/.netlify",
-  ],
+    "**/*.gen.*"
+  ]
 }

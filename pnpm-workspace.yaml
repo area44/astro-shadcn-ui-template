@@ -1,6 +1,6 @@
 packages:
   - "."
 allowBuilds:
-  esbuild: true
-  msw: true
-  sharp: true
+  esbuild: false
+  msw: false
+  sharp: false

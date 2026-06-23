@@ -1,6 +1,6 @@
 # Astro shadcn/ui template
 
-A modern starter template using [Astro 7](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), and [shadcn/ui](https://ui.shadcn.com/) - perfect for building fast, accessible, and themeable web apps.
+A modern starter template using [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), and [shadcn/ui](https://ui.shadcn.com/) - perfect for building fast, accessible, and themeable web apps.
 
 ---
 

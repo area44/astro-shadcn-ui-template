@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
 import { siteConfig } from "@/lib/config";
 import { cn } from "@/lib/utils";
 
@@ -9,8 +9,8 @@ export function MobileNav({ className }: { className?: string }) {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger>
         <Button
           variant="ghost"
           className={cn(
@@ -37,16 +37,14 @@ export function MobileNav({ className }: { className?: string }) {
           </div>
           <span className="flex h-8 items-center text-lg leading-none font-medium">Menu</span>
         </Button>
-      </PopoverTrigger>
+      </DialogTrigger>
 
-      <PopoverContent
-        className="no-scrollbar h-(--available-height) w-(--available-width) overflow-y-auto rounded-none border-none bg-background/90 p-0 shadow-none backdrop-blur duration-100"
-        align="start"
-        side="bottom"
-        alignOffset={-16}
-        sideOffset={12}
+      <DialogContent
+        variant="full"
+        className="no-scrollbar overflow-y-auto bg-background/95 backdrop-blur-md"
       >
-        <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
+        <DialogTitle className="sr-only">Menu</DialogTitle>
+        <div className="flex flex-col gap-12 px-6 py-20">
           <div className="flex flex-col gap-4">
             <div className="text-sm font-medium text-muted-foreground">Menu</div>
 
@@ -57,6 +55,7 @@ export function MobileNav({ className }: { className?: string }) {
 
               {siteConfig.navItems.map((item) => (
                 <a
+                  key={item.href}
                   href={item.href}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}
@@ -69,7 +68,7 @@ export function MobileNav({ className }: { className?: string }) {
             </div>
           </div>
         </div>
-      </PopoverContent>
-    </Popover>
+      </DialogContent>
+    </Dialog>
   );
 }

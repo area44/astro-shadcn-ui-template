@@ -141,6 +141,7 @@
     @apply overscroll-y-none scroll-smooth font-sans;
   }
   body {
+    @apply overscroll-none;
     @apply bg-background font-sans text-foreground;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;

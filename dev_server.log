@@ -1,0 +1,22 @@
+
+> @area44/astro-shadcn-ui-template@26.02.24 dev /app
+> astro dev
+
+15:09:12 [vite] connected.
+15:09:14 [types] Generated 1ms
+15:09:14 [vite] connected.
+15:09:14 [vite] Re-optimizing dependencies because vite config has changed
+ astro  v7.0.4 ready in 3199 ms
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+15:09:14 watching for file changes...
+15:09:15 [vite] [optimizer] bundling dependencies...
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `MainNav`. See https://react.dev/link/warning-keys for more information.
+15:09:52 [200] / 243ms
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `MainNav`. See https://react.dev/link/warning-keys for more information.
+15:10:14 [200] / 36ms
+ ELIFECYCLE  Command failed with exit code 143.

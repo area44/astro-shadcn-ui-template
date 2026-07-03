@@ -44,9 +44,9 @@ function DialogContent({
         data-slot="dialog-content"
         data-variant={variant}
         className={cn(
-          "bg-popover fixed z-50 grid gap-6 text-popover-foreground duration-100 outline-none data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
+          "fixed z-50 grid gap-6 bg-popover text-popover-foreground duration-100 outline-none data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
           variant === "default" &&
-            "top-1/2 left-1/2 w-full max-w-xs -translate-x-1/2 -translate-y-1/2 rounded-xl p-6 ring-1 ring-foreground/10 data-open:zoom-in-95 data-closed:zoom-out-95 sm:max-w-lg",
+            "top-1/2 left-1/2 w-full max-w-xs -translate-x-1/2 -translate-y-1/2 rounded-xl p-6 ring-1 ring-foreground/10 sm:max-w-lg data-open:zoom-in-95 data-closed:zoom-out-95",
           variant === "full" && "inset-0 h-svh w-screen",
           className,
         )}
@@ -60,10 +60,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="dialog-header"
-      className={cn(
-        "grid gap-1.5 text-center sm:text-left",
-        className,
-      )}
+      className={cn("grid gap-1.5 text-center sm:text-left", className)}
       {...props}
     />
   );
@@ -73,26 +70,17 @@ function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="dialog-footer"
-      className={cn(
-        "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-        className,
-      )}
+      className={cn("flex flex-col-reverse gap-2 sm:flex-row sm:justify-end", className)}
       {...props}
     />
   );
 }
 
-function DialogTitle({
-  className,
-  ...props
-}: React.ComponentProps<typeof DialogPrimitive.Title>) {
+function DialogTitle({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Title>) {
   return (
     <DialogPrimitive.Title
       data-slot="dialog-title"
-      className={cn(
-        "text-lg font-medium",
-        className,
-      )}
+      className={cn("text-lg font-medium", className)}
       {...props}
     />
   );
@@ -105,26 +93,14 @@ function DialogDescription({
   return (
     <DialogPrimitive.Description
       data-slot="dialog-description"
-      className={cn(
-        "text-sm text-muted-foreground",
-        className,
-      )}
+      className={cn("text-sm text-muted-foreground", className)}
       {...props}
     />
   );
 }
 
-function DialogClose({
-  className,
-  ...props
-}: DialogPrimitive.Close.Props) {
-  return (
-    <DialogPrimitive.Close
-      data-slot="dialog-close"
-      className={cn(className)}
-      {...props}
-    />
-  );
+function DialogClose({ className, ...props }: DialogPrimitive.Close.Props) {
+  return <DialogPrimitive.Close data-slot="dialog-close" className={cn(className)} {...props} />;
 }
 
 export {

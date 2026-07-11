@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
 
       - name: Run build
-        uses: area44/workflows/astro@d630b2d72e8ec6d64a85141763062ee5ec2d7785 # v5.0.0
+        uses: area44/workflows/astro@c52bb9f7b430a02c706983d46d06cc8d1b5dc7fb # v5.0.1
 
   deploy:
     needs: build

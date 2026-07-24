@@ -96,11 +96,12 @@ export function CommandMenu() {
       {/* Trigger Button inside Header */}
       <Button
         variant="outline"
-        className="relative h-9 w-40 justify-start text-muted-foreground sm:w-64"
+        className="relative size-9 justify-center p-0 text-muted-foreground sm:h-9 sm:w-64 sm:justify-start sm:px-3"
         onClick={() => setOpen(true)}
+        aria-label="Search commands"
       >
-        <SearchIcon className="mr-2 size-4 shrink-0" />
-        <span className="text-xs">Search commands...</span>
+        <SearchIcon className="size-4 shrink-0 sm:mr-2" />
+        <span className="hidden text-xs sm:inline-block">Search commands...</span>
         <kbd className="pointer-events-none absolute top-2 right-2 hidden h-5 items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 select-none sm:flex">
           <span className="text-xs">⌘</span>K
         </kbd>

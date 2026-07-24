@@ -125,7 +125,6 @@ export function CommandMenu() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   className="w-full bg-transparent py-1 text-sm text-foreground outline-none placeholder:text-muted-foreground"
-                  autoFocus
                 />
                 <DialogPrimitive.Close
                   render={<Button variant="ghost" size="icon-xs" />}

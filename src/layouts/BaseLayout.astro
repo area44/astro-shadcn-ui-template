@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import HeadSEO from "@/components/HeadSEO.astro";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Toaster } from "sonner";
 
 const { title, description, ogImage } = Astro.props;
 ---
@@ -37,5 +38,6 @@ const { title, description, ogImage } = Astro.props;
       </main>
       <Footer />
     </div>
+    <Toaster client:load />
   </body>
 </html>

@@ -1,6 +1,7 @@
 import { HomeIcon } from "lucide-react";
 import * as React from "react";
 
+import { CommandMenu } from "@/components/CommandMenu";
 import { Icons } from "@/components/Icons";
 import { MainNav } from "@/components/MainNav";
 import { MobileNav } from "@/components/MobileNav";
@@ -59,6 +60,8 @@ export function Header() {
           <MainNav className="hidden lg:flex" />
 
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
+            <CommandMenu />
+
             <a
               href={siteConfig.links.github}
               target="_blank"

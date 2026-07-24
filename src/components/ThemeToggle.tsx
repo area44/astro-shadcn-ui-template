@@ -35,6 +35,38 @@ export const ThemeToggle: React.FC = () => {
     return () => media.removeEventListener("change", listener);
   }, []);
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore if user is typing in form controls or contenteditables
+      const activeElement = document.activeElement;
+      if (activeElement) {
+        const tagName = activeElement.tagName.toLowerCase();
+        if (
+          tagName === "input" ||
+          tagName === "textarea" ||
+          tagName === "select" ||
+          activeElement.hasAttribute("contenteditable") ||
+          activeElement.getAttribute("role") === "textbox"
+        ) {
+          return;
+        }
+      }
+
+      // Check for Cmd+Shift+D, Ctrl+Shift+D, or just "d" / "D" (excluding modified single-key presses if modifier keys are down)
+      const isD = e.key.toLowerCase() === "d";
+      const isCmdShiftD = (e.metaKey || e.ctrlKey) && e.shiftKey && isD;
+      const isSingleD = isD && !e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey;
+
+      if (isCmdShiftD || isSingleD) {
+        e.preventDefault();
+        setTheme((t) => (t === "dark" ? "light" : "dark"));
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const toggleTheme = () => {
     setTheme((t) => (t === "dark" ? "light" : "dark"));
   };

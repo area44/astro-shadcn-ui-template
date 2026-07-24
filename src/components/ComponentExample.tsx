@@ -78,7 +78,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { Field, FieldGroup, FieldLabel, FieldError } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -91,12 +91,16 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
+import { ErrorBoundary } from "./ErrorBoundary";
+
 export function ComponentExample() {
   return (
-    <ExampleWrapper>
-      <CardExample />
-      <FormExample />
-    </ExampleWrapper>
+    <ErrorBoundary>
+      <ExampleWrapper>
+        <CardExample />
+        <FormExample />
+      </ExampleWrapper>
+    </ErrorBoundary>
   );
 }
 
@@ -107,8 +111,8 @@ function CardExample() {
         <div className="absolute inset-0 z-30 aspect-video bg-primary opacity-50 mix-blend-color" />
         <img
           src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Photo by mymind on Unsplash"
-          title="Photo by mymind on Unsplash"
+          alt="mymind on Unsplash"
+          title="mymind on Unsplash"
           className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale"
         />
         <CardHeader>
@@ -165,6 +169,49 @@ function FormExample() {
     push: true,
   });
   const [theme, setTheme] = React.useState("light");
+
+  const [name, setName] = React.useState("");
+  const [role, setRole] = React.useState<string | null>(null);
+  const [framework, setFramework] = React.useState<string | null>(null);
+  const [comments, setComments] = React.useState("");
+  const [errors, setErrors] = React.useState<Record<string, string>>({});
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newErrors: Record<string, string> = {};
+
+    if (!name.trim()) {
+      newErrors.name = "Name is required.";
+    }
+
+    if (!role) {
+      newErrors.role = "Please select a role.";
+    }
+
+    if (!framework) {
+      newErrors.framework = "Please select a framework.";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      alert(
+        `Submitted successfully!\nName: ${name}\nRole: ${role}\nFramework: ${framework}\nComments: ${comments}`,
+      );
+      setName("");
+      setRole(null);
+      setFramework(null);
+      setComments("");
+    }
+  };
+
+  const handleCancel = () => {
+    setName("");
+    setRole(null);
+    setFramework(null);
+    setComments("");
+    setErrors({});
+  };
 
   return (
     <Example title="Form">
@@ -406,16 +453,33 @@ function FormExample() {
           </CardAction>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit}>
             <FieldGroup>
               <div className="grid grid-cols-2 gap-4">
-                <Field>
+                <Field data-invalid={!!errors.name}>
                   <FieldLabel htmlFor="small-form-name">Name</FieldLabel>
-                  <Input id="small-form-name" placeholder="Enter your name" required />
+                  <Input
+                    id="small-form-name"
+                    placeholder="Enter your name"
+                    value={name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                      if (errors.name) setErrors((prev) => ({ ...prev, name: "" }));
+                    }}
+                    required
+                  />
+                  {errors.name && <FieldError>{errors.name}</FieldError>}
                 </Field>
-                <Field>
+                <Field data-invalid={!!errors.role}>
                   <FieldLabel htmlFor="small-form-role">Role</FieldLabel>
-                  <Select items={roleItems} defaultValue={null}>
+                  <Select
+                    items={roleItems}
+                    value={role}
+                    onValueChange={(val) => {
+                      setRole(val);
+                      if (errors.role) setErrors((prev) => ({ ...prev, role: "" }));
+                    }}
+                  >
                     <SelectTrigger id="small-form-role">
                       <SelectValue />
                     </SelectTrigger>
@@ -429,11 +493,19 @@ function FormExample() {
                       </SelectGroup>
                     </SelectContent>
                   </Select>
+                  {errors.role && <FieldError>{errors.role}</FieldError>}
                 </Field>
               </div>
-              <Field>
+              <Field data-invalid={!!errors.framework}>
                 <FieldLabel htmlFor="small-form-framework">Framework</FieldLabel>
-                <Combobox items={frameworks}>
+                <Combobox
+                  items={frameworks}
+                  value={framework}
+                  onValueChange={(val) => {
+                    setFramework(val);
+                    if (errors.framework) setErrors((prev) => ({ ...prev, framework: "" }));
+                  }}
+                >
                   <ComboboxInput
                     id="small-form-framework"
                     placeholder="Select a framework"
@@ -450,14 +522,20 @@ function FormExample() {
                     </ComboboxList>
                   </ComboboxContent>
                 </Combobox>
+                {errors.framework && <FieldError>{errors.framework}</FieldError>}
               </Field>
               <Field>
                 <FieldLabel htmlFor="small-form-comments">Comments</FieldLabel>
-                <Textarea id="small-form-comments" placeholder="Add any additional comments" />
+                <Textarea
+                  id="small-form-comments"
+                  placeholder="Add any additional comments"
+                  value={comments}
+                  onChange={(e) => setComments(e.target.value)}
+                />
               </Field>
               <Field orientation="horizontal">
                 <Button type="submit">Submit</Button>
-                <Button variant="outline" type="button">
+                <Button variant="outline" type="button" onClick={handleCancel}>
                   Cancel
                 </Button>
               </Field>

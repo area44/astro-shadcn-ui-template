@@ -13,6 +13,7 @@ export function MainNav({ className, ...props }: React.ComponentProps<"nav">) {
         const isExternal = item.external;
         return (
           <a
+            key={item.href}
             href={item.href}
             {...(isExternal
               ? {

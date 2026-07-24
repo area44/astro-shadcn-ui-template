@@ -15,7 +15,7 @@ export function MobileNav({ className }: { className?: string }) {
           <Button
             variant="ghost"
             className={cn(
-              "extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 p-0! hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent",
+              "extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 p-0! hover:bg-transparent! focus-visible:bg-transparent! focus-visible:ring-0 active:bg-transparent! aria-expanded:bg-transparent!",
               className,
             )}
           />

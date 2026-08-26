@@ -15,5 +15,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - name: Run lint/format scripts
+      - name: Run lint and format
         uses: area44/workflows/lint-format@fee7744257e2a2556f3f296b5ba93fa3e34d8204 # v6.0.1

@@ -1,4 +1,5 @@
 export type SiteConfig = {
+  basePath: string;
   name: string;
   description: string;
   url: string;
@@ -17,6 +18,7 @@ export type SiteConfig = {
 };
 
 export const siteConfig: SiteConfig = {
+  basePath: import.meta.env.BASE_URL,
   name: "Astro shadcn/ui template",
   description: "The template helps you build apps with Astro, Tailwind CSS, and shadcn/ui.",
   url: "https://astro-shadcn-ui-template.vercel.app",

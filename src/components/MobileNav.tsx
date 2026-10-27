@@ -53,7 +53,11 @@ export function MobileNav({ className }: { className?: string }) {
             <div className="text-sm font-medium text-muted-foreground">Menu</div>
 
             <div className="flex flex-col gap-3">
-              <a href="/" className="text-2xl font-medium" onClick={() => setOpen(false)}>
+              <a
+                href={siteConfig.basePath}
+                className="text-2xl font-medium"
+                onClick={() => setOpen(false)}
+              >
                 Home
               </a>
 

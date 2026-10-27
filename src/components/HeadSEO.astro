@@ -20,6 +20,7 @@ const ogImageURL = ogImage
   ? new URL(ogImage, Astro.site).toString()
   : new URL("og-image.png", canonicalURL).toString();
 const faviconURL = new URL("favicon.svg", canonicalURL).toString();
+const faviconICOURL = new URL("favicon.ico", canonicalURL).toString();
 ---
 
 <!-- Basic -->
@@ -30,8 +31,8 @@ const faviconURL = new URL("favicon.svg", canonicalURL).toString();
 
 <!-- Canonical -->
 <link rel="canonical" href={canonicalURL} />
-<link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href={faviconICOURL} sizes="any" />
+<link rel="icon" href={faviconURL} type="image/svg+xml" />
 
 <!-- Title -->
 <title>{title}</title>

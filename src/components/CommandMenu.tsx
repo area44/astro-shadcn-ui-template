@@ -45,7 +45,7 @@ export function CommandMenu() {
         subtitle: "Navigate to the landing page",
         icon: HomeIcon,
         action: () => {
-          window.location.href = "/";
+          window.location.href = siteConfig.basePath;
           setOpen(false);
         },
       },

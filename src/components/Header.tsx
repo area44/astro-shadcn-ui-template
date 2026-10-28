@@ -47,7 +47,7 @@ export function Header() {
           <MobileNav className="flex lg:hidden" />
 
           <a
-            href="/"
+            href={siteConfig.basePath}
             className={cn(
               buttonVariants({ variant: "ghost", size: "icon" }),
               "hidden size-8 lg:flex",
